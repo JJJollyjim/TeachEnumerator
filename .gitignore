@@ -2,3 +2,4 @@
 *.swo
 *~
 db/teachenumerator.sqlite
+*.sqlite-journal
