@@ -1,5 +1,10 @@
+require 'rubygems'
+require 'bundler/setup'
+
 require 'sinatra'
 require 'json'
+
+require_relative 'db/db'
 
 get '/' do
   'Hello world!'

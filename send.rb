@@ -1,3 +1,6 @@
+require 'rubygems'
+require 'bundler/setup'
+
 require 'aws/ses'
 
 ses = AWS::SES::Base.new(
