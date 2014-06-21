@@ -17,12 +17,22 @@ post '/send' do
   # Read the response body
   data = JSON.parse request.body.read
 
-  # Open a file with the teacher's name as the filename
-  File.open "data/#{data["tname"]}", "w" do |f|
+  # Create teacher in database
+  teacher = Teacher.create(
+    :code_and_name => data['tname'],
+    :email         => data['temail']
+  )
 
-    # Write the email address and list of students to file
-    f.write(data["temail"] + "\n" + data["students"].join("\n"))
+  data['students'].each do |name|
+    # Create student in database
+    student = Student.create(:name => name)
 
+    # Create testimonial
+    testimonial = Testimonial.create()
+
+    # Link the teacher and student vis the testimonial
+    teacher.add_testimonial(testimonial)
+    student.add_testimonial(testimonial)
   end
 
   # Respond "usefully"
