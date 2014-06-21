@@ -25,10 +25,14 @@ post '/send' do
 
   data['students'].each do |student|
     # Create student in database
-    student = Student.create(
-      :name  => student['name'],
-      :email => student['email']
-    )
+    if Student.where(:email=>student['email']).count == 0
+      student = Student.create(
+        :name  => student['name'],
+        :email => student['email']
+      )
+    else
+      student = Student.where(:email=>student['email']).first
+    end
 
     # Create testimonial
     testimonial = Testimonial.create()
