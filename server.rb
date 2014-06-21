@@ -23,9 +23,12 @@ post '/send' do
     :email => data['temail']
   )
 
-  data['students'].each do |name|
+  data['students'].each do |student|
     # Create student in database
-    student = Student.create(:name => name)
+    student = Student.create(
+      :name  => student['name'],
+      :email => student['email']
+    )
 
     # Create testimonial
     testimonial = Testimonial.create()

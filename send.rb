@@ -45,5 +45,3 @@ Teacher.each do |teacher|
   sleep 0.2
   
 end
-
-
