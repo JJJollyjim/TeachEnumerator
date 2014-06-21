@@ -1,6 +1,6 @@
 DB.create_table?(:teachers) do
   primary_key :id
-  String :code_and_name
+  String :name
   String :email
 end
 

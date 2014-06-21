@@ -19,8 +19,8 @@ post '/send' do
 
   # Create teacher in database
   teacher = Teacher.create(
-    :code_and_name => data['tname'],
-    :email         => data['temail']
+    :name  => data['tname'],
+    :email => data['temail']
   )
 
   data['students'].each do |name|
