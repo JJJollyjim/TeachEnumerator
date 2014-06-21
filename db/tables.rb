@@ -10,7 +10,7 @@ DB.create_table?(:students) do
 end
 
 DB.create_table?(:testimonials) do
-	primary_key :id
+  primary_key :id
   Integer :student_id
   Integer :teacher_id
 end
