@@ -1,3 +1,6 @@
+puts 'Exiting for safety...'
+exit
+
 require 'rubygems'
 require 'bundler/setup'
 
