@@ -5,7 +5,7 @@ gem 'aws-ses'
 
 # Data collection server
 gem 'sinatra'
-gem 'tilt'
+gem 'thin'
 gem 'sequel'
 gem 'sqlite3'
 
