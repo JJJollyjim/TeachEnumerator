@@ -7,7 +7,7 @@ require 'json'
 require_relative 'db/db'
 
 get '/' do
-  'Hello world!'
+  erb :index
 end
 
 post '/send' do
@@ -25,13 +25,13 @@ post '/send' do
 
   data['students'].each do |student|
     # Create student in database
-    if Student.where(:email=>student['email']).count == 0
+    if Student.where(:email => student['email']).count == 0
       student = Student.create(
         :name  => student['name'],
         :email => student['email']
       )
     else
-      student = Student.where(:email=>student['email']).first
+      student = Student.where(:email => student['email']).first
     end
 
     # Create testimonial
