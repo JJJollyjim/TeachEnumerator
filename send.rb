@@ -9,8 +9,8 @@ require 'aws/ses'
 require_relative 'db/db'
 
 ses = AWS::SES::Base.new(
-  :access_key_id     => "AKIAJQWGTHQGTBDHLJDA",
-  :secret_access_key => "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"
+  :access_key_id     => ENV['AWS_SES_KEY_ID']
+  :secret_access_key => ENV['TE_AWS_SES_SECRET_ACCESS_KEY']
 )
 
 Teacher.each do |teacher|
