@@ -1,8 +1,15 @@
+require 'digest'
+
 class Teacher < Sequel::Model
   one_to_many :testimonials
 
   def num_testimonials_submitted
     self.testimonials.count &:submitted
+  end
+
+  def make_secret
+    md5 = Digest::MD5.new
+    self.update(:secret => md5.hexdigest(self.email + ENV['TE_SALT']))
   end
 end
 

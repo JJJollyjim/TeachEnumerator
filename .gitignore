@@ -3,3 +3,4 @@
 *~
 db/teachenumerator.sqlite
 *.sqlite-journal
+utils

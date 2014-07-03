@@ -1,3 +1,41 @@
-body {
-  background-color: #e5e5e5;
+.titlesubtitle {
+  line-height: 0.8;
+  margin-bottom: 15px;
+}
+
+th {
+  background: #eee;
+}
+
+.wsnowrap {
+  white-space: nowrap;
+}
+
+.col-med {
+  width: 99%;
+}
+
+.color-red {
+  color: #AA0000;
+}
+
+.color-green {
+  color: #00AA00;
+}
+
+.col-width-tickbox {
+  width: 60px;
+}
+
+.my-container {
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+td.td-center {
+  text-align: center;
+}
+
+.td-vam {
+	vertical-align: middle !important;
 }

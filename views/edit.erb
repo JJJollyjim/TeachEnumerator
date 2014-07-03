@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>WGC Testimonials</title>
+    <link rel='stylesheet' href='//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css'>
+    <link rel='stylesheet' href='/main.css'>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src='//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js'></script>
+  </head>
+
+  <body>
+    <div class='my-container'>
+      <h1 class='titlesubtitle'>
+        WGC Testimonial System<br>
+        <small>Editing Testimonial for <%= student_name %></small>
+      </h1>
+      <form method='post' action='/testimonials/submit/<%= params[:secret] %>/<%= id %>' onsubmit="return confirm('Are you sure you want to submit?\nOnce you submit, you cannot edit your responses!');">
+        <h3>Specific Qualities</h3>
+        <p>Please tick and add comments:</p>
+        <table class='table table-bordered'>
+          <tr>
+            <th></th>
+            <th class='col-width-tickbox'>Poor</th>
+            <th class='col-width-tickbox'>Avg-</th>
+            <th class='col-width-tickbox'>Avg</th>
+            <th class='col-width-tickbox'>Good</th>
+            <th class='col-width-tickbox'>Great</th>
+            <th>Comments</th>
+          </tr>
+          <% qualities = {
+               'independence'  =>'Independent study / self discipline / time management',
+               'relationships' => 'Relationships / concern for others',
+               'maturity'      => 'Personal behaviour / social maturity',
+               'confidence'    => 'Self confidence /  adaptability',
+               'academic'      => 'Academic ability'
+             }
+          %>
+
+          <% qualities.each do |quality,desc| %>
+            <tr>
+              <th class='td-vam'><%= desc %></th>
+              <% (1..5).each do |num| %>
+                <td class='td-center td-vam'>
+                  <input
+                    type='radio'
+                    name='rating_<%= quality %>'
+                    value='<%= num %>'
+                    >
+                </td>
+              <% end %>
+              <td>
+                <textarea class='form-control input-sm' name='comments_<%= quality %>' rows='3'></textarea>
+              </td>
+            </tr>
+          <% end %>
+        </table>
+
+        <div class='form-group'>
+          <label>General Comments (on potential/personality/achievement/etc.)</label>
+          <textarea class='form-control' name='long_comments_general' rows='4'></textarea>
+        </div>
+
+        <div class='form-group'>
+          <label>In what capacity / how long have you known the student?</label>
+          <textarea class='form-control' name='long_comments_known' rows='4'></textarea>
+        </div>
+
+        <input type='submit' class='btn btn-primary' value='Submit'>
+      </form>
+    </div>
+  </body>
+</html>

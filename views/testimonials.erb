@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>WGC Testimonials</title>
+    <link rel='stylesheet' href='//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css'>
+    <link rel='stylesheet' href='/main.css'>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src='//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js'></script>
+  </head>
+
+  <body>
+    <div class='container'>
+      <h1 class='titlesubtitle'>
+        WGC Testimonial System<br>
+        <small><%= teacher_name %>'s Testimonials</small>
+      </h1>
+
+      <p>Here are the students who have requested testimonials of you:</p>
+      <table class='table'>
+        <tr>
+          <th class='wsnowrap'>Submitted?</th>
+          <th class='col-med' >Name:</th>
+          <th class='wsnowrap'>Edit:</th>
+        </tr>
+        <% testimonials.each do |t| %>
+          <% submitted = t.submitted %>
+          <tr>
+            <td class='<%= red_or_green submitted %>'>
+              <%= tick_or_cross submitted %>
+            </td>
+            <td>
+              <%= t.student.name %>
+            </td>
+            <td>
+              <% unless submitted %>
+                <a href='/testimonials/edit/<%= params[:secret] %>/<%= t.id %>' class='btn-sm btn-primary'>Edit</a>
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
+      </table>
+    </div>
+  </body>
+</html>
