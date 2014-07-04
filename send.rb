@@ -19,31 +19,17 @@ Teacher.each do |teacher|
   url = "testimonials.kwiius.com/testimonials/#{teacher[:secret]}"
 
   body =  "<p>Hello #{teacher[:name]},</p>"
-  body << "<p>#{teacher.testimonials.count} students have requested testimonials from you this year.</p>"
-  body << "<p>Here is your testimonial link:</p>"
+  body << "<p>#{teacher.testimonials.count} students have requested testimonial comments from you this year.</p>"
+  body << "<p>To see your list of students, click on this link:</p>"
   body << "<p><a href='#{url}'>#{url}</a></p>"
-  body << "<p>You may visit this link at any time to write your testimonials up until Friday the 8th of August (the end of Week 3)</p>"
-
-
-#         "Here are the students who have requested testimonials from you this year:" + "<br>" +
-#         "<ul>"
-#
-#  names = teacher.testimonials.map do |test|
-#    test.student[:name]
-#  end
-#
-#  names.each do |name|
-#    body << "<li>" + name + "</li>"
-#  end
-#
-#  body << "</ul>" + "<br><br>" +
-#          "<small>This is an automated system. Please report faults to jamie@kwiius.com</small>"
+  body << "<p>You may visit this link at any time to write testimonials comments.<br>I would appreciate it if these could be completed by Friday the 8th of August (the end of Week 3)</p>"
+  body << "<br><p>~ Janet McCallister</p>"
 
   ses.send_email(
 #    :to        => teacher[:email],
     :to        => 'jamie.mcclymont@gmail.com',
     :from      => '"WGC Testimonial System" <janet.mccallister@wgc.school.nz>',
-    :subject   => 'Your Student Testimonial Applications',
+    :subject   => 'Your Year 13 Testimonial Requests',
     :html_body => body
   )
   
